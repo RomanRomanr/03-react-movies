@@ -8,6 +8,7 @@ import { useState } from 'react';
 import type { VoteType, Votes } from '../../types/votes';
 
 function App() {
+  console.log(import.meta.env.VITE_API);
   const [votes, setVotes] = useState<Votes>({ good: 0, neutral: 0, bad: 0 });
   const handleVote = (type: VoteType) => {
     setVotes(pre => ({
