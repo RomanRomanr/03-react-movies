@@ -1,13 +1,45 @@
-import css from './CafeInfo.module.css'
+import styles from "./SearchBar.module.css";
+import toast from "react-hot-toast";
 
-const CafeInfo = () => {
-    return (
-        <div className={css.container}>
-            <h1 className={css.title}>Sip Happens Café</h1>
-            <p className={css.description}>
-                Please rate our service by selecting one of the options below.
-            </p>
-        </div>
-    )
+interface SeachBarProps {
+  onSubmit: (q: string) => void;
+}
+
+const SeachBar = ({onSubmit} : SeachBarProps) => {
+  const handleSubmit = (FormData: FormData) => {
+    const q = FormData.get('q');
+    if (typeof q !== 'string' || !q.trim()) {
+      toast.error("Please enter your search query");
+      return;
+    }
+    onSubmit(q);
+  }
+  return (
+    <header className={styles.header}>
+  <div className={styles.container}>
+    <a
+       className={styles.link}
+      href="https://www.themoviedb.org/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Powered by TMDB
+    </a>
+    <form className={styles.form} action={handleSubmit}>
+      <input
+        className={styles.input}
+        type="text"
+        name="query"
+        autoComplete="off"
+        placeholder="Search movies..."
+        autoFocus
+      />
+      <button className={styles.button} type="submit">
+        Search
+      </button>
+    </form>
+  </div>
+</header>
+  );
 };
-export default CafeInfo 
+export default SeachBar;
