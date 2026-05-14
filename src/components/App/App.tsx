@@ -1,6 +1,6 @@
 import { useState } from "react";
 import css from './App.module.css'
-import ErrorMessage from "../ErrorMessege/ErrorMessage";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import Loader from "../Loader/Loade";
 import MovieGrid from "../MovieGrid/MovieGrid";
 import MovieModal from "../MovieModal/MovieModal";
