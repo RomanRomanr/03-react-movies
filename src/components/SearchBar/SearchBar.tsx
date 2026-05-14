@@ -7,7 +7,7 @@ interface SeachBarProps {
 
 const SeachBar = ({onSubmit} : SeachBarProps) => {
   const handleSubmit = (FormData: FormData) => {
-    const query = FormData.get("q");
+    const query = FormData.get("query");
     if (typeof query !== "string" || !query.trim()) {
       toast.error("Please enter your search query");
       return;
