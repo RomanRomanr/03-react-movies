@@ -1,11 +1,11 @@
 import styles from "./SearchBar.module.css";
 import toast from "react-hot-toast";
 
-interface SeachBarProps {
+interface SearchBarProps {
   onSubmit: (query: string) => void;
 }
 
-const SeachBar = ({onSubmit} : SeachBarProps) => {
+const SearchBar = ({onSubmit} : SearchBarProps) => {
   const handleSubmit = (FormData: FormData) => {
     const query = FormData.get("query");
     if (typeof query !== "string" || !query.trim()) {
@@ -42,4 +42,4 @@ const SeachBar = ({onSubmit} : SeachBarProps) => {
 </header>
   );
 };
-export default SeachBar;
+export default SearchBar;
