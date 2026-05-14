@@ -1,7 +1,7 @@
 import { createPortal } from "react-dom";
 import css from "./MovieModal.module.css";
 import { useEffect } from "react";
-import type { Movie } from '../../types/movie';
+import type { Movie } from "../../types/movie";
 interface MovieModalProps {
   movie: Movie;
   onClose: () => void;
@@ -52,18 +52,18 @@ const MovieModal = ({ movie, onClose }: MovieModalProps) => {
           className={css.image}
         />
         <div className={css.content}>
-                  <h2>{movie.title}</h2>
-                  <p>{movie.overview}</p>
+          <h2>{movie.title}</h2>
+          <p>{movie.overview}</p>
           <p>
             <strong>Release Date:</strong> {movie.release_date}
           </p>
           <p>
-                      <strong>Rating:</strong> {movie.vote_average}/10
+            <strong>Rating:</strong> {movie.vote_average}/10
           </p>
         </div>
       </div>
     </div>,
-    modalRoot
+    modalRoot,
   );
 };
 export default MovieModal;

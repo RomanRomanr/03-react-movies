@@ -1,5 +1,5 @@
 import { useState } from "react";
-import css from './App.module.css'
+import css from "./App.module.css";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import Loader from "../Loader/Loade";
 import MovieGrid from "../MovieGrid/MovieGrid";
@@ -7,9 +7,7 @@ import MovieModal from "../MovieModal/MovieModal";
 import SearchBar from "../SearchBar/SearchBar";
 import toast, { Toaster } from "react-hot-toast";
 import type { Movie } from "../../types/movie";
-import { FetchMovies } from "../../services/services";
-
-
+import { FetchMovies } from "../../services/movieService";
 
 function App() {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -51,14 +49,11 @@ function App() {
           />
         )
       )}
-      {selectMovie && (
-        <MovieModal movie={selectMovie} onClose={close} />
-      )}
+      {selectMovie && <MovieModal movie={selectMovie} onClose={close} />}
 
       <Toaster position="top-center" />
     </div>
   );
 }
 
-
-export default App
+export default App;
