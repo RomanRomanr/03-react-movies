@@ -1,8 +1,7 @@
-import css from './Notification.module.css'
+import css from './ErrorMessage.module.css'
 
-const Notification = () => {
-    return <p className={css.message}>No feedback yet</p>;
-    
+const ErrorMessage = () => {
+  return <p className={css.text}>There was an error, please try again...</p>;
 };
 
-export default Notification;
+export default ErrorMessage;

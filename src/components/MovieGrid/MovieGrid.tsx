@@ -1,28 +1,31 @@
-import type { VoteType } from "../../types/movie";
-import css from "./VoteOptions.module.css";
-interface VoteOptionsProps {
-  onVote: (type: VoteType) => void;
-  onReset: () => void;
-  canReset: boolean;
+import css from "./MovieGrid.module.css";
+import type { Movie } from "../../types/movie";
+interface MovieGridProps {
+  movies: Movie[];
+  onSelect: (movie: Movie) => void; 
+
 }
-const VoteOptions = ({ onVote, onReset, canReset }: VoteOptionsProps) => {
+const MovieGrid = ({ movies, onSelect}: MovieGridProps) => {
   return (
-    <div className={css.container}>
-      <button className={css.button} onClick={() => onVote("good")}>
-        Good
-      </button>
-      <button className={css.button} onClick={() => onVote("neutral")}>
-        Neutral
-      </button>
-      <button className={css.button} onClick={() => onVote("bad")}>
-        Bad
-      </button>
-      {canReset && (
-        <button className={`${css.button} ${css.reset}`} onClick={onReset}>
-          Reset
-        </button>
-      )}
-    </div>
+    <ul className={css.grid}>
+      {movies.map((movie) => (
+        <li key={movie.id} onClick={() => onSelect(movie)}>
+          <div className={css.card}>
+            <img
+              className={css.image}
+              src={
+                movie.poster_path
+                  ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                  : "https://via.placeholder.com/500x750?text=No+Image"
+              }
+              alt={movie.title}
+              loading="lazy"
+            />
+            <h2 className={css.title}>{movie.title}</h2>
+          </div>
+        </li>
+      ))}
+    </ul>
   );
 };
-export default VoteOptions;
+export default MovieGrid;
