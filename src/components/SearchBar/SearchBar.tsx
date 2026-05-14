@@ -2,17 +2,17 @@ import styles from "./SearchBar.module.css";
 import toast from "react-hot-toast";
 
 interface SeachBarProps {
-  onSubmit: (q: string) => void;
+  onSubmit: (query: string) => void;
 }
 
 const SeachBar = ({onSubmit} : SeachBarProps) => {
   const handleSubmit = (FormData: FormData) => {
-    const q = FormData.get('q');
-    if (typeof q !== 'string' || !q.trim()) {
+    const query = FormData.get("q");
+    if (typeof query !== "string" || !query.trim()) {
       toast.error("Please enter your search query");
       return;
     }
-    onSubmit(q);
+    onSubmit(query);
   }
   return (
     <header className={styles.header}>
